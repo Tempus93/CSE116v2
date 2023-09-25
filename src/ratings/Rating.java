@@ -23,6 +23,8 @@ public class Rating {
 
     public static void main(String[] args){
         Rating J = new Rating();
+        J.setReviewerID("5555");
+        J.setRating(4);
 
 
     }
