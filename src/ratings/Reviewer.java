@@ -10,12 +10,21 @@ public class Reviewer {
     }
 
     public Rating rateSong(int num){
+
         Rating obj = new Rating();
         obj.setRating(num);
         obj.setReviewerID(this.reviewerID);
         return obj;
+
     }
 
+    public static void main(String[] args){
+
+        Reviewer Jack = new Reviewer();
+        Jack.setReviewerID("23584");
+        Jack.rateSong(4);
+
+    }
 
 
 }

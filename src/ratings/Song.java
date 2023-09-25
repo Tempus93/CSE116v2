@@ -29,5 +29,17 @@ public class Song {
         this.SongID = SongID;
 
     }
+    public static void main(String[] args){
+        Song t = new Song();
+        t.setSongID("43475223");
+        t.setTitle("SexyBack");
+        t.setArtist("Justin Timberlake");
+
+         System.out.print(t.getSongID() +'\n');
+         System.out.print(t.getTitle()+'\n');
+         System.out.print(t.getArtist() +'\n');
+    }
+
 
 }
+

@@ -35,9 +35,6 @@ public class TestClasses1 {
         obj.setArtist("Drake");
         obj.setTitle("Sticky");
         obj.setSongID("2591214");
-        System.out.print(obj.getArtist()+ "\n");
-        System.out.print(obj.getTitle() + "\n");
-        System.out.print(obj.getSongID()+ "\n");
     }
 
     // Testing Commit & Push

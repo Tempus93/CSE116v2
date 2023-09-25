@@ -20,4 +20,10 @@ public class Rating {
     public int getRating(){
         return this.Rating;
     }
+
+    public static void main(String[] args){
+        Rating J = new Rating();
+
+
+    }
 }
