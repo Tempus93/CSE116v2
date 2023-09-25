@@ -9,7 +9,7 @@ public class Song {
         return this.Title;
     }
 
-    public String getSongID(String SongID){
+    public String getSongID(){
         return this.SongID;
 
     }
@@ -21,7 +21,7 @@ public class Song {
         this.Title = Title;
     }
 
-    public void setArtist(String artist){
+    public void setArtist(String Artist){
         this.Artist = Artist;
 
     }

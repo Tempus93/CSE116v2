@@ -7,9 +7,6 @@ public class Rating {
     public void setReviewerID(String ID){
         this.ID = ID;
     }
-    public String getReviewerID(){
-        return this.ID;
-    }
     public void setRating(int Rating){
         if (Rating >= 1 && Rating <= 5){
             this.Rating = Rating;
@@ -17,7 +14,10 @@ public class Rating {
             this.Rating = -1;
         }
     }
-    public String getRating(){
-        return Integer.toString(this.Rating);
+    public String getReviewerID(){
+        return this.ID;
+    }
+    public int getRating(){
+        return this.Rating;
     }
 }
