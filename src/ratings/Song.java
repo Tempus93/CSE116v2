@@ -5,24 +5,30 @@ public class Song {
     private String Artist;
     private String SongID;
 
+    public Song(String Title,String Artist,String SongID){
+        this.Title = Title;
+        this.Artist = Artist;
+        this.SongID = SongID;
+    }
+
     public String getTitle(){
         return this.Title;
     }
 
-    public String getSongID(){
-        return this.SongID;
-
+    public void setTitle(String Title){
+        this.Title = Title;
     }
     public String getArtist(){
         return this.Artist;
 
     }
-    public void setTitle(String Title){
-        this.Title = Title;
-    }
-
     public void setArtist(String Artist){
         this.Artist = Artist;
+
+    }
+
+    public String getSongID(){
+        return this.SongID;
 
     }
     public void setSongID(String SongID){
@@ -30,14 +36,14 @@ public class Song {
 
     }
     public static void main(String[] args){
-        Song t = new Song();
-        t.setSongID("43475223");
-        t.setTitle("SexyBack");
-        t.setArtist("Justin Timberlake");
+        Song t = new Song("SexyBack","Justin Timber","11432");
+        t.setTitle(t.getTitle());
+        t.setSongID(t.getSongID());
+        t.setArtist(t.getArtist());
 
-         System.out.print(t.getSongID() +'\n');
-         System.out.print(t.getTitle()+'\n');
-         System.out.print(t.getArtist() +'\n');
+        System.out.print(t.getSongID() +'\n');
+        System.out.print(t.getTitle()+'\n');
+        System.out.print(t.getArtist() +'\n');
     }
 
 
