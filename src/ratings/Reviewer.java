@@ -11,12 +11,21 @@ public class Reviewer {
         return ReviewerID;
     }
     public void setReviewerID(String reviewerID){
+
         this.ReviewerID = reviewerID;
 
     }
+
+
     public Rating rateSong(int num){
 
-        return new Rating(this.ReviewerID,num);
+        if (num >= 1 && num <= 5){
+            return new Rating(this.ReviewerID,num);
+        }
+        else {
+            return new Rating(this.ReviewerID,-1);
+        }
+
 
     }
 

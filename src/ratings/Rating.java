@@ -6,22 +6,25 @@ public class Rating {
 
     public Rating(String ID, int Rating){
         this.ID = ID;
-        this.Rating = setRating(Rating);
+        if (Rating >= 1 && Rating <= 5){
+            this.Rating = Rating;
+        }else {
+            this.Rating = -1;
+        }
     }
 
-    public void setReviewerID(String setReviewerID){
-        this.ID = setReviewerID;
+    public void setReviewerID(String reviewerID){
+        this.ID = reviewerID;
     }
 
-    public int setRating(int Rating){
+    public void setRating(int Rating){
 
-        if (Rating >= 1 && Rating < 5){
+        if (Rating >= 1 && Rating <= 5){
             this.Rating = Rating;
         }
         else {
             this.Rating = -1;
         }
-        return Rating;
     }
     public String getReviewerID(){
         return this.ID;

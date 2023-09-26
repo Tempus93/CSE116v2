@@ -19,47 +19,116 @@ public class TestClasses1 {
 
 
     @Test
-    public void RatingPass5(){
-        Rating t = new Rating("3452",100);
+    public void Rating_Past_5(){
+        Rating t = new Rating("421",100);
         t.setReviewerID(t.getReviewerID());
-        t.setRating(t.getRating());
+        t.setRating(100);
 
         assertEquals(-1, t.getRating());
     }
 
     @Test
-    public void RatingBelow1(){
+    public void Rating_Cap_Constructor(){
+        Rating t = new Rating("444",100);
+
+        assertEquals(-1,t.getRating());
+
+    }
+
+    @Test
+    public void Rating_Below_1(){
         Rating t = new Rating("3452",-5);
         t.setRating(t.getRating());
+        t.setReviewerID(t.getReviewerID());
 
         assertEquals(-1, t.getRating());
+    }
+
+    @Test
+    public void Rating_no_ID(){
+        Rating t = new Rating("",3);
+        t.setRating(t.getRating());
+        t.setReviewerID(t.getReviewerID());
+
+        assertTrue(t.getReviewerID().isBlank());
+
+
     }
     @Test
     public void Song(){
         Song t = new Song("Sticky","Drake","4921");
-        t.setArtist(t.getArtist());
-        t.setTitle(t.getTitle());
-        t.setSongID(t.getSongID());
+        t.setArtist("");
+        t.setTitle("");
+        t.setSongID("");
 
-        assertEquals("Drake", t.getArtist());
-        assertEquals("Sticky", t.getTitle());
-        assertEquals("4921", t.getSongID());
+        assertTrue(t.getArtist().isBlank());
+        assertTrue(t.getTitle().isBlank());
+        assertTrue(t.getSongID().isBlank());
     }
 
     @Test
-    public void Reviewer(){
+    public void Reviewer_rateSong_below_1(){
         Reviewer t = new Reviewer("26742");
         t.setReviewerID(t.getReviewerID());
+        Rating h = t.rateSong(-6);
 
 
-        assertEquals(t.getReviewerID(),"26742");
+
+        assertEquals(-1,h.getRating());
     }
 
     @Test
-    public void RatingReviewerID(){
-        Rating t = new Rating("35115",4);
+    public void Reviewer_rateSong_above_5(){
+        Reviewer t = new Reviewer("26742");
         t.setReviewerID(t.getReviewerID());
+        Rating h = t.rateSong(100);
 
-        assertEquals("35115", t.getReviewerID());
+
+        assertEquals(-1,h.getRating());
+
+    }
+
+    @Test
+    public void reviewer_no_ID(){
+        Reviewer t = new Reviewer("46892");
+        t.setReviewerID(t.getReviewerID());
+        Rating h = t.rateSong(4);
+        h.setReviewerID("");
+
+        assertTrue(h.getReviewerID().isBlank());
+    }
+
+
+    @Test
+    public void wrong_rating(){
+        Reviewer t = new Reviewer("555");
+        t.setReviewerID(t.getReviewerID());
+        Rating h = t.rateSong(4);
+        h.setRating(3);
+
+        assertNotEquals(h.getRating(), t.rateSong(4).getRating());
+
+
+
+    }
+
+
+    @Test
+    public void no_ID_RateSong(){
+        Reviewer t = new Reviewer("55");
+        t.setReviewerID(t.getReviewerID());
+        Rating h = t.rateSong(4);
+        h.setReviewerID("");
+
+        assertNotEquals(h.getReviewerID(), t.rateSong(4).getReviewerID());
+
+    }
+
+    @Test
+    public void bad_setter_Reviewer(){
+        Reviewer t = new Reviewer("55");
+        t.setReviewerID("");
+
+        assertTrue(t.getReviewerID().isBlank());
     }
 }
