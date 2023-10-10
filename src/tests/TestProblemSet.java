@@ -2,9 +2,7 @@ package tests;
 
 import org.junit.Test;
 import ratings.ProblemSet;
-
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Objects;
 

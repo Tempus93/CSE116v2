@@ -7,14 +7,14 @@ public class Rating {
     public Rating(String ID, int Rating){
         this.ID = ID;
         if (Rating >= 1 && Rating <= 5){
-            this.Rating = Rating;
+           this.Rating = Rating;
         }else {
             this.Rating = -1;
         }
     }
 
     public void setReviewerID(String reviewerID){
-        this.ID = reviewerID;
+            this.ID = reviewerID;
     }
 
     public void setRating(int Rating){

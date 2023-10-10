@@ -1,5 +1,7 @@
 package ratings.datastructures;
 
+import ratings.Rating;
+
 public class LinkedListNode<T> {
 
     private T value;
@@ -9,6 +11,7 @@ public class LinkedListNode<T> {
         this.value = val;
         this.next = next;
     }
+
 
     public T getValue() {
         return this.value;
