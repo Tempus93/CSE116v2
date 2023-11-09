@@ -11,6 +11,8 @@ public class FileReader {
 
     public static ArrayList<Song> readSong(String filename) {
         ArrayList<Song> SongList = new ArrayList<>();
+
+
         try {
 
             ArrayList<String> Lines = new ArrayList<>(Files.readAllLines((Paths.get(filename))));
@@ -36,7 +38,6 @@ public class FileReader {
             }
 
         }
-
         catch (IOException e) {
             return new ArrayList<>();
         }
@@ -46,6 +47,7 @@ public class FileReader {
 
     public static ArrayList<Movie> readMovie(String filename){
         ArrayList<Movie> movieArrayList = new ArrayList<>();
+
         try {
 
             ArrayList<String> Lines = new ArrayList<>(Files.readAllLines((Paths.get(filename))));
@@ -61,13 +63,11 @@ public class FileReader {
                 }
                 Movie movie = new Movie(movieTitle,cast);
                 movieArrayList.add(movie);
-
             }
         }
         catch (IOException e){
             return new ArrayList<>();
         }
-
 
         return movieArrayList;
     }
