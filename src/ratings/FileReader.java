@@ -12,7 +12,6 @@ public class FileReader {
     public static ArrayList<Song> readSongs(String filename) {
         ArrayList<Song> SongList = new ArrayList<>();
 
-
         try {
 
             ArrayList<String> Lines = new ArrayList<>(Files.readAllLines((Paths.get(filename))));
@@ -21,21 +20,20 @@ public class FileReader {
 
             for(String line:Lines){
                 ArrayList<String> splits = new ArrayList<>(Arrays.asList(line.split(",")));
-                String SpotifyID = splits.get(0);
-                String Artist = splits.get(1);
-                String Title = splits.get(2);
-                String ReviewerID = splits.get(3);
-                int Rating = Integer.parseInt(splits.get(4));
+                String songID = splits.get(0);
+                String artist = splits.get(1);
+                String title = splits.get(2);
+                String reviewerID = splits.get(3);
+                int rating = Integer.parseInt(splits.get(4));
 
                 // prevent dupe SpotifyIDs in array
-                if(!songHashMap.containsKey(SpotifyID)){
-                    Song song = new Song(SpotifyID,Artist,Title);
+                if(!songHashMap.containsKey(songID)){
+                    Song song = new Song(songID,artist,title);
                     SongList.add(song);
-                    songHashMap.put(SpotifyID,song);
+                    songHashMap.put(songID,song);
                 }
-                songHashMap.get(SpotifyID).addRating(new Rating(ReviewerID,Rating));
+                songHashMap.get(songID).addRating(new Rating(reviewerID,rating));
             }
-
         }
         catch (IOException e) {
             return new ArrayList<>();
