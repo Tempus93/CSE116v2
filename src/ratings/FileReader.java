@@ -9,14 +9,13 @@ import java.util.HashMap;
 
 public class FileReader {
 
-    public static ArrayList<Song> readSong(String filename) {
+    public static ArrayList<Song> readSongs(String filename) {
         ArrayList<Song> SongList = new ArrayList<>();
 
 
         try {
 
             ArrayList<String> Lines = new ArrayList<>(Files.readAllLines((Paths.get(filename))));
-            Lines.remove(0); // used to remove header
 
             HashMap<String, Song> songHashMap = new HashMap<>(); // hashmap to track songs & stop dupes
 
@@ -28,7 +27,7 @@ public class FileReader {
                 String ReviewerID = splits.get(3);
                 int Rating = Integer.parseInt(splits.get(4));
 
-                // prevent dupes in array
+                // prevent dupe SpotifyIDs in array
                 if(!songHashMap.containsKey(SpotifyID)){
                     Song song = new Song(SpotifyID,Artist,Title);
                     SongList.add(song);
@@ -45,13 +44,12 @@ public class FileReader {
         return SongList;
     }
 
-    public static ArrayList<Movie> readMovie(String filename){
+    public static ArrayList<Movie> readMovies(String filename){
         ArrayList<Movie> movieArrayList = new ArrayList<>();
 
         try {
 
             ArrayList<String> Lines = new ArrayList<>(Files.readAllLines((Paths.get(filename))));
-            Lines.remove(0); // used to remove header
 
             for (String line: Lines){
                 ArrayList<String> splits = new ArrayList<>(Arrays.asList(line.split(",")));

@@ -306,6 +306,7 @@ public class TestClasses2 {
         Movie test = new Movie("Jurassic Park",cast);
 
 
+
         for(int i = 0; i < test.getCast().size();i++){
             if (!cast2.get(i).equalsIgnoreCase(test.getCast().get(i))){
                 assertFalse(cast2.get(i).equalsIgnoreCase(test.getCast().get(i)));
@@ -314,7 +315,6 @@ public class TestClasses2 {
                 assertTrue(cast2.get(i).equalsIgnoreCase(test.getCast().get(i)));
             }
         }
-
 
     }
     @Test
