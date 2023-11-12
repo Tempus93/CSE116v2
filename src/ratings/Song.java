@@ -7,7 +7,7 @@ public class Song extends Ratable {
     private String SongID;
 
 
-    public Song(String SongID,String Artist,String Title){
+    public Song(String Title,String Artist,String SongID){
         super(Title);
         this.Artist = Artist;
         this.SongID = SongID;
