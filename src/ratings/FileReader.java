@@ -74,9 +74,9 @@ public class FileReader {
     }
 
     public static ArrayList<Movie> readMovieRatings(ArrayList<Movie> Movies, String filename){
-        ArrayList<Movie> movieArrayList;
+        ArrayList<Movie> movieArrayList = new ArrayList<>();
+        HashMap<String , ArrayList<Rating>> movieHashMap = new HashMap<>();
 
-        HashMap<String , Rating> movieHashMap = new HashMap<>();
 
         try {
             ArrayList<String> Lines = new ArrayList<>(Files.readAllLines((Paths.get(filename))));
@@ -86,28 +86,33 @@ public class FileReader {
                 String reviewerID = splits.get(1);
                 int ratings = Integer.parseInt(splits.get(2));
 
+                // contains all the rating objects/prevents multiple title duplicates.
                 if(!movieHashMap.containsKey(title)){
-                    Rating rating = new Rating(reviewerID,ratings);
-                    movieHashMap.put(title,rating);
+                    ArrayList<Rating> ratingArrayList = new ArrayList<>();
+                    ratingArrayList.add(new Rating(reviewerID,ratings));
+                    movieHashMap.put(title,ratingArrayList);
+                }
+                else{
+                    movieHashMap.get(title).add(new Rating(reviewerID,ratings));
                 }
             }
-            for(Map.Entry<String, Rating> entry: movieHashMap.entrySet()){
-                for(Movie movie: Movies){
+            for(Movie movie: Movies){
+                for(Map.Entry<String, ArrayList<Rating>> entry: movieHashMap.entrySet()){
                     if (movie.getTitle().equalsIgnoreCase(entry.getKey())){
-                        movie.addRating(entry.getValue());
+                          for(Rating rating : entry.getValue()){
+                              movie.addRating(rating);
+                          }
+                          movieArrayList.add(movie);
                     }
                 }
             }
-            movieArrayList = Movies;
 
         }
         catch (IOException e){
             return new ArrayList<>();
 
         }
-
-
-
+        
         return movieArrayList;
     }
 }
