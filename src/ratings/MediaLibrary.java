@@ -5,7 +5,7 @@ import java.util.ArrayList;
 
 public class MediaLibrary {
 
-    private ArrayList<Ratable> ratable = new ArrayList<>();
+    private final ArrayList<Ratable> ratable = new ArrayList<>();
     public MediaLibrary(){
     }
 
@@ -19,7 +19,6 @@ public class MediaLibrary {
             ratableSong.setRatings(song.getRatings());
             this.ratable.add(ratableSong);
         }
-
         for (Movie movie: Movieratings){
             Ratable ratableMovie = new Ratable(movie.getTitle());
             ratableMovie.setRatings(movie.getRatings());
@@ -28,11 +27,9 @@ public class MediaLibrary {
         }
 
 
-
-
     }
 
-    public ArrayList<Ratable> topKRatables(int top){
+        public ArrayList<Ratable> topKRatables(int top){
 
         ArrayList<Ratable> ratableArrayList = this.ratable;
         if(top > ratableArrayList.size() ){

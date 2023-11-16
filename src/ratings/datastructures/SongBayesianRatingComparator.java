@@ -1,5 +1,6 @@
 package ratings.datastructures;
 
+import ratings.Ratable;
 import ratings.Song;
 
 public class SongBayesianRatingComparator extends Comparator<Song> {
@@ -8,3 +9,7 @@ public class SongBayesianRatingComparator extends Comparator<Song> {
         return a.bayesianAverageRating(2,3) > b.bayesianAverageRating(2,3);
     }
 }
+
+
+
+

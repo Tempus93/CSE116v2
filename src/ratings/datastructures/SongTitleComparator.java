@@ -1,5 +1,6 @@
 package ratings.datastructures;
 
+import ratings.Ratable;
 import ratings.Song;
 
 
@@ -10,5 +11,6 @@ public class SongTitleComparator extends Comparator<Song>{
     }
 
 }
+
 
 
