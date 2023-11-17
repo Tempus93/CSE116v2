@@ -75,8 +75,8 @@ public class FileReader {
 
     public static ArrayList<Movie> readMovieRatings(ArrayList<Movie> Movies, String filename){
         ArrayList<Movie> movieArrayList = new ArrayList<>();
-        HashMap<String , ArrayList<Rating>> movieHashMap = new HashMap<>();
 
+        HashMap<String , ArrayList<Rating>> movieHashMap = new HashMap<>();
 
         try {
             ArrayList<String> Lines = new ArrayList<>(Files.readAllLines((Paths.get(filename))));
@@ -86,33 +86,33 @@ public class FileReader {
                 String reviewerID = splits.get(1);
                 int ratings = Integer.parseInt(splits.get(2));
 
-                // contains all the rating objects/prevents multiple title duplicates.
                 if(!movieHashMap.containsKey(title)){
                     ArrayList<Rating> ratingArrayList = new ArrayList<>();
                     ratingArrayList.add(new Rating(reviewerID,ratings));
                     movieHashMap.put(title,ratingArrayList);
-                }
-                else{
+                }else{
                     movieHashMap.get(title).add(new Rating(reviewerID,ratings));
+
                 }
             }
             for(Movie movie: Movies){
                 for(Map.Entry<String, ArrayList<Rating>> entry: movieHashMap.entrySet()){
                     if (movie.getTitle().equalsIgnoreCase(entry.getKey())){
-                          for(Rating rating : entry.getValue()){
-                              movie.addRating(rating);
-                          }
-                          movieArrayList.add(movie);
+                        for (Rating rating: entry.getValue()){
+                            movie.addRating(rating);
+                        }
+                        movieArrayList.add(movie);
                     }
                 }
             }
-
         }
         catch (IOException e){
             return new ArrayList<>();
 
         }
-        
+
+
+
         return movieArrayList;
     }
 }
