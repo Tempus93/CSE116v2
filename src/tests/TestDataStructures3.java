@@ -2,7 +2,6 @@ package tests;
 import ratings.*;
 import org.junit.Test;
 
-import java.util.ArrayList;
 
 import static org.junit.Assert.*;
 
@@ -14,7 +13,7 @@ public class TestDataStructures3 {
 
         test.degreesOfSeparation("Chris Pratt","Kevin Bacon");
 
-        assertEquals(-1,test.degreesOfSeparation("Empty","Chris Pratt"));
+        assertEquals(-1,test.degreesOfSeparation("empty","Chris Pratt"));
 
     }
     @Test
@@ -33,7 +32,16 @@ public class TestDataStructures3 {
 
         test.degreesOfSeparation("Chris Pratt","Chris Pratt");
 
-        assertTrue(test.degreesOfSeparation("Chris Pratt","Tom Hanks") > 1);
+        assertTrue(test.degreesOfSeparation("Chris Pratt","Kevin Bacon") > 1);
+
+    }
+
+    @Test
+    public void DegreeOfSeparationMore(){
+        DegreesOfSeparation test = new DegreesOfSeparation(FileReader.readMovies("data/movies.csv"));
+
+
+       System.out.println(test.degreesOfSeparation("Kevin Bacon","Chris Pratt"));
 
     }
 }

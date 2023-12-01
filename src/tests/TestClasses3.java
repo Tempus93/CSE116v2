@@ -51,7 +51,7 @@ public class TestClasses3 {
     public void testReadMovieRatingsUnratedMovies() {
         ArrayList<Movie> empty = FileReader.readMovies("data/moviestest1.csv");
         // Test empty input ArrayList
-        ArrayList<Movie> test = FileReader.readMovieRatings(empty, "data/movie_ratingtest2.csv");
+        ArrayList<Movie> test = FileReader.readMovieRatings(empty, "data/movie_ratingstest3.csv");
         Movie movie = empty.get(0);
 
         assertFalse(test.contains(movie));
